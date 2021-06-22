@@ -1,0 +1,10 @@
+### IDEA ###
+.idea/*
+*.iml
+*/target/*
+*/*.iml
+/.gradle/
+*/rebel.xml
+*/.mvn
+*/mvnw
+*/mvnw.cmd
