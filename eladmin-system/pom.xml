@@ -37,6 +37,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.4.0</version>
+        </dependency>
 
         <!-- tools 模块包含了 common 和 logging 模块 -->
         <dependency>

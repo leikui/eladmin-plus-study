@@ -21,6 +21,24 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter</artifactId>
             <version>7.1.0.M6</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mybatis</groupId>
+                    <artifactId>mybatis</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti.dependencies</groupId>
+            <artifactId>activiti-dependencies</artifactId>
+            <version>7.1.0.M6</version>
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mybatis</groupId>
+                    <artifactId>mybatis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -30,6 +48,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- tools 模块包含了 common 和 logging 模块 -->
+        <dependency>
+            <groupId>me.zhengjie</groupId>
+            <artifactId>eladmin-tools</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
