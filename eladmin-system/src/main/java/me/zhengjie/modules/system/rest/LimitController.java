@@ -15,10 +15,15 @@
  */
 package me.zhengjie.modules.system.rest;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import me.zhengjie.annotation.Limit;
 import me.zhengjie.annotation.rest.AnonymousGetMapping;
+import me.zhengjie.modules.system.domain.User;
+import me.zhengjie.modules.system.service.UserService;
+import me.zhengjie.modules.system.service.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +40,8 @@ public class LimitController {
 
     private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger();
 
+    @Autowired
+    private UserMapper service;
     /**
      * 测试限流注解，下面配置说明该接口 60秒内最多只能访问 10次，保存到redis的键名为 limit_test，
      */
@@ -42,6 +49,10 @@ public class LimitController {
     @ApiOperation("测试")
     @Limit(key = "test", period = 60, count = 10, name = "testLimit", prefix = "limit")
     public int test() {
+        User user = new User();
+        user.setId(3l);
+        UpdateWrapper<User> wrapper = new UpdateWrapper<User>().setEntity(user);
+        service.update(user,wrapper);
         return ATOMIC_INTEGER.incrementAndGet();
     }
 }

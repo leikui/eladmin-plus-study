@@ -16,6 +16,7 @@
 package me.zhengjie.modules.system.rest;
 
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +60,7 @@ public class DictDetailController {
         } else {
             return new ResponseEntity<>(dictDetailService.getDictByName(query.getDictName(), pageable), HttpStatus.OK);
         }
+
     }
 
     @ApiOperation("查询多个字典详情")

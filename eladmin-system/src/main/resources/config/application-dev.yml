@@ -52,11 +52,17 @@ spring:
               wall:
                 config:
                   multi-statement-allow: true
-  activiti:
-    database-schema-update: true
-    db-history-used: true
-    history-level: full
-    check-process-definitions: false
+#        flow:
+#          driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#          url: jdbc:log4jdbc:mysql://${DB_HOST:47.119.146.110}:${DB_PORT:3306}/${DB_NAME:flowable-ui}?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false
+#          username: ${DB_USER:root}
+#          password: ${DB_PWD:123456}
+flowable:
+  #关闭定时任务JOB
+  async-executor-activate: false
+  #  将databaseSchemaUpdate设置为true。当Flowable发现库与数据库表结构不一致时，会自动将数据库表结构升级至新版本。
+  # 是否需要自动部署流程定义。
+  check-process-definitions: false
 # 登录相关配置
 login:
   # 登录缓存
@@ -118,6 +124,7 @@ file:
   linux:
     path: /home/eladmin/file/
     avatar: /home/eladmin/avatar/
+
   windows:
     path: C:\eladmin\file\
     avatar: C:\eladmin\avatar\

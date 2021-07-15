@@ -97,6 +97,24 @@ public class SwaggerConfiguration {
         return docket;
     }
     @Bean(value = "defaultApi5")
+    public Docket defaultApi5() {
+        Docket docket=new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                //分组名称
+                .enable(enabled)
+                .pathMapping("/")
+                .groupName("工作流接口")
+                .select()
+                //这里指定Controller扫描包路径
+                .apis(RequestHandlerSelectors.basePackage("me.zhengjie.modules.flow.rest"))
+                .paths(PathSelectors.any())
+                .build();
+                //添加登陆认证
+//                .securitySchemes(securitySchemes())
+//                .securityContexts(securityContexts());
+        return docket;
+    }
+    @Bean(value = "defaultApi6")
     public Docket defaultApi6() {
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
