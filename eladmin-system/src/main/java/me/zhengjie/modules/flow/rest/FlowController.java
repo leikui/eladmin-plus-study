@@ -1,7 +1,9 @@
 package me.zhengjie.modules.flow.rest;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import me.zhengjie.modules.flow.domain.Act;
 import me.zhengjie.modules.flow.domain.FlowRequestBean;
 import me.zhengjie.modules.flow.service.FlowService;
@@ -10,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +30,14 @@ import java.util.Map;
 public class FlowController {
     @Autowired
     private FlowService flowService;
+
+    @PostMapping("/uploadMaterial2")
+    @ApiOperation(value = "上传流程文件")
+    @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "__File")
+    public ResponseEntity uploadProcessFile(@RequestParam(value = "file") MultipartFile file,
+                                            HttpServletRequest request){
+        return new ResponseEntity(flowService.importProcessDefinition(file),HttpStatus.OK);
+    }
 
     /**
      * 启动流程

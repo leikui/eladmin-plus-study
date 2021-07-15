@@ -13,7 +13,7 @@ import java.util.Map;
  * @date 2019-11-27
  */
 public interface FlowService {
-    boolean importProcessDefinition(MultipartFile file);
+    String importProcessDefinition(MultipartFile file);
     /**
      * 启动流程
      *

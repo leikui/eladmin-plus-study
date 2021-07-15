@@ -39,6 +39,7 @@
     </properties>
 
     <dependencies>
+
         <!--Spring boot 核心-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -129,6 +130,12 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>3.0.2</version>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>javax.validation</groupId>-->
+<!--                    <artifactId>validation-api</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
         <!--Mysql依赖包-->
         <dependency>

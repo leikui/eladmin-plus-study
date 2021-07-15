@@ -58,7 +58,8 @@ public class FLowServiceImpl implements FlowService {
     private IdentityService identityService;
 
     @Override
-    public boolean importProcessDefinition(MultipartFile file) {
+    public String importProcessDefinition(MultipartFile file) {
+        ProcessDefinition processDefinition;
         try {
             Deployment deployment = repositoryService.createDeployment()
                     // .key()
@@ -74,14 +75,14 @@ public class FLowServiceImpl implements FlowService {
                     // 通过xml字符串的形式
                     // .addString()
                     .deploy();
-            ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().deploymentId(deployment.getId()).singleResult();
+             processDefinition = repositoryService.createProcessDefinitionQuery().deploymentId(deployment.getId()).singleResult();
             if (processDefinition == null) {
-                return false;
+                return null;
             }
         } catch (Exception e) {
             throw new BadRequestException("导入流程定义失败：" + e.getMessage());
         }
-        return true;
+        return processDefinition.getKey();
     }
 
     /**
